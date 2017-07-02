@@ -1,5 +1,6 @@
 package planningpoker
 
+import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
 import org.springframework.web.bind.annotation.RestController
@@ -10,8 +11,10 @@ class RoomRestController {
 
     @RequestMapping(
             method = arrayOf(RequestMethod.GET),
-            path = arrayOf("/state"))
-    fun getState(): RoomState {
+            path = arrayOf("/room/{roomName}/state"))
+    fun getState(
+            @PathVariable("roomName") roomName: String
+    ): RoomState {
         return RoomState(arrayOf("abc"))
     }
 }
