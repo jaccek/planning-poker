@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>Join Room</h1>
-<form th:action="@{/joinRoom}" th:object="${testModel}" method="post">
+<form th:action="@{/joinRoom}" th:object="${newRoomModel}" method="post">
     Room name:
     <input type="text" th:field="*{roomName}"/>
     <input type="submit"/>

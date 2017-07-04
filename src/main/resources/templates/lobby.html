@@ -5,6 +5,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
-    <p th:text="'Hello, ' + ${testModel.roomName} + '!'"></p>
+<h1>Join Room</h1>
+<form th:action="@{/joinRoom}" th:object="${newRoomModel}" method="post">
+    Room name:
+    <input type="text" th:field="*{roomName}"/>
+    <input type="submit"/>
+</form>
 </body>
 </html>

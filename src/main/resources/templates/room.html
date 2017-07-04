@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+
+<h1 th:text="#{room.roomName} + ' ' + ${roomState.roomName}">Room name</h1>
+
+<table>
+    <thead>
+    <tr>
+        <td th:text="#{room.username}">Username</td>
+        <td th:text="#{room.userVote}">Vote</td>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="userVote : ${roomState.users}">
+        <td th:text="${userVote.user.username}">Tester</td>
+        <td th:text="${userVote.vote}">Not voted</td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
