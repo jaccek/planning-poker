@@ -41,6 +41,9 @@ dependencies {
     compile "org.springframework.boot:spring-boot-starter-web"
     compile "org.springframework.boot:spring-boot-starter-thymeleaf"
 
+    // Hibernate
+    compile "org.hibernate:hibernate-validator"
+
     // JUnit
     testCompile "junit:junit:4.12"
 

@@ -6,9 +6,19 @@
 </head>
 <body>
 <h1>Join Room</h1>
-<form th:action="@{/joinRoom}" th:object="${newRoomModel}" method="post">
-    Room name:
-    <input type="text" th:field="*{roomName}"/>
+<form th:action="@{/joinRoom}" th:object="${joinRoomForm}" method="post">
+    <table>
+        <tr>
+            <td>Room name:</td> <!-- TODO: use translations -->
+            <td><input type="text" th:field="*{roomName}"/></td>
+            <td th:if="${#fields.hasErrors('roomName')}" th:errors="*{roomName}">Room name error</td> <!-- TODO: use translations -->
+        </tr>
+        <tr>
+            <td>Username:</td> <!-- TODO: use translations -->
+            <td><input type="text" th:field="*{username}"/></td>
+            <td th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username error</td> <!-- TODO: use translations -->
+        </tr>
+    </table>
     <input type="submit"/>
 </form>
 </body>

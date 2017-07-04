@@ -23,6 +23,10 @@ class RoomWebController {
                         UserVote(
                                 user = User(username = "tester"),
                                 vote = Vote.VOTE_INFINITY
+                        ),
+                        UserVote(
+                                user = User(username = "member"),
+                                vote = Vote.NOT_VOTED
                         )
                 )
         )
