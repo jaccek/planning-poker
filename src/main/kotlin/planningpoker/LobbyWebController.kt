@@ -4,6 +4,8 @@ import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.validation.BindingResult
 import org.springframework.web.bind.annotation.*
+import planningpoker.action.spring.JoinRoomSpringAction
+import planningpoker.action.spring.ShowLobbySpringAction
 import planningpoker.model.JoinRoomForm
 import javax.validation.Valid
 
@@ -17,15 +19,16 @@ class LobbyWebController {
             model: Model
     ): String {
         if (bindingResult.hasErrors()) {
-            return "lobby"
+            return ShowLobbySpringAction().perform()
         }
 
-        model.addAttribute("name", joinRoomForm.roomName)
-        return "redirect:/room/${joinRoomForm.roomName}"
+        return JoinRoomSpringAction(joinRoomForm.roomName!!)
+                .withModel(model)
+                .perform()
     }
 
     @GetMapping("/")
     fun showLobby(joinRoomForm: JoinRoomForm): String {
-        return "lobby"
+        return ShowLobbySpringAction().perform()
     }
 }

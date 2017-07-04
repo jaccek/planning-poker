@@ -36,6 +36,10 @@ dependencies {
     // Kotlin
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
+    // RxJava & RxKotlin
+    compile "io.reactivex.rxjava2:rxjava:2.1.1"
+    compile "io.reactivex.rxjava2:rxkotlin:2.+"
+
     // Spring
     compile "org.springframework.boot:spring-boot-devtools"
     compile "org.springframework.boot:spring-boot-starter-web"
