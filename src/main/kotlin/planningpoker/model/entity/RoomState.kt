@@ -1,4 +1,4 @@
-package planningpoker.entity
+package planningpoker.model.entity
 
 data class RoomState(
         val roomName: String,

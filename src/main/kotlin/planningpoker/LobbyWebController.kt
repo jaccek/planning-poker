@@ -6,7 +6,7 @@ import org.springframework.validation.BindingResult
 import org.springframework.web.bind.annotation.*
 import planningpoker.action.spring.JoinRoomSpringAction
 import planningpoker.action.spring.ShowLobbySpringAction
-import planningpoker.model.JoinRoomForm
+import planningpoker.model.form.JoinRoomForm
 import javax.validation.Valid
 
 @Controller

@@ -4,10 +4,10 @@ import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
-import planningpoker.entity.RoomState
-import planningpoker.entity.User
-import planningpoker.entity.UserVote
-import planningpoker.entity.Vote
+import planningpoker.model.entity.RoomState
+import planningpoker.model.entity.User
+import planningpoker.model.entity.UserVote
+import planningpoker.model.entity.Vote
 
 @Controller
 class RoomWebController {
