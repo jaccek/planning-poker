@@ -16,11 +16,13 @@ class RoomServiceImpl : RoomService {
 
     override fun findRoomByName(roomName: String) =
             roomDao.findByName(roomName)
-    
-    override fun createRoom(room: Room) =
-            roomDao.add(room.apply {
-                lastUpdate = Timestamp(System.currentTimeMillis())
-            })
+
+    override fun createRoomIfNotExists(room: Room) {
+        if (findRoomByName(room.name) == null) {
+            room.lastUpdate = Timestamp(System.currentTimeMillis())
+            roomDao.add(room)
+        }
+    }
 
     override fun updateRoom(room: Room) =
             roomDao.update(room.apply {

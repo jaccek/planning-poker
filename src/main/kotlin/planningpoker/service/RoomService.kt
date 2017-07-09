@@ -6,7 +6,7 @@ interface RoomService {
 
     fun findRoomByName(roomName: String): Room?
 
-    fun createRoom(room: Room)
+    fun createRoomIfNotExists(room: Room)
 
     fun updateRoom(room: Room)
 

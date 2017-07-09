@@ -9,7 +9,7 @@ import planningpoker.model.hibernate.Room
 import java.sql.Timestamp
 
 @Repository
-class RoomDaoImpl : RoomDao {
+open class RoomDaoImpl : RoomDao {
 
     @Autowired
     private lateinit var sessionFactory: SessionFactory

@@ -5,6 +5,7 @@ import org.hibernate.cfg.AvailableSettings
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration
 import org.springframework.context.annotation.*
 import org.springframework.core.env.Environment
 import org.springframework.jdbc.datasource.DriverManagerDataSource
@@ -20,11 +21,12 @@ import planningpoker.hibernatetest.MyApplication
 import java.util.*
 import javax.sql.DataSource
 
-@SpringBootApplication
+@SpringBootApplication(exclude = arrayOf(HibernateJpaAutoConfiguration::class))
+@ComponentScan("planningpoker")
 open class Application
 
 @Configuration
-@ComponentScan("planningpoker")
+//@ComponentScan("planningpoker")
 open class ApplicationConfiguration : WebMvcConfigurerAdapter() {
 
     @Bean
@@ -68,7 +70,7 @@ open class HibernateConfig {
     open fun getSessionFactory(): LocalSessionFactoryBean =
             LocalSessionFactoryBean().apply {
                 setDataSource(getDataSource())
-                setPackagesToScan("planningpoker.hibernatetest.model")
+                setPackagesToScan("planningpoker.model.hibernate")
                 hibernateProperties = this@HibernateConfig.getHibernateProperties()
             }
 
@@ -87,17 +89,17 @@ open class HibernateConfig {
 }
 
 fun main(args: Array<String>) {
-//    SpringApplication.run(Application::class.java, *args)
+    SpringApplication.run(Application::class.java, *args)
 
-    var context: AnnotationConfigApplicationContext? = null
-
-    try {
-        context = AnnotationConfigApplicationContext(ApplicationConfiguration::class.java)
-        val application = context.getBean(MyApplication::class.java)
-        application.performDbTasks()
-    } catch (e: Exception) {
-        e.printStackTrace()
-    } finally {
-        context?.close()
-    }
+//    var context: AnnotationConfigApplicationContext? = null
+//
+//    try {
+//        context = AnnotationConfigApplicationContext(ApplicationConfiguration::class.java)
+//        val application = context.getBean(MyApplication::class.java)
+//        application.performDbTasks()
+//    } catch (e: Exception) {
+//        e.printStackTrace()
+//    } finally {
+//        context?.close()
+//    }
 }
