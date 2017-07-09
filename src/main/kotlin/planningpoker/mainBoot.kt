@@ -17,7 +17,6 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor
 import org.springframework.web.servlet.i18n.SessionLocaleResolver
-import planningpoker.hibernatetest.MyApplication
 import java.util.*
 import javax.sql.DataSource
 
@@ -26,7 +25,6 @@ import javax.sql.DataSource
 open class Application
 
 @Configuration
-//@ComponentScan("planningpoker")
 open class ApplicationConfiguration : WebMvcConfigurerAdapter() {
 
     @Bean
@@ -90,16 +88,4 @@ open class HibernateConfig {
 
 fun main(args: Array<String>) {
     SpringApplication.run(Application::class.java, *args)
-
-//    var context: AnnotationConfigApplicationContext? = null
-//
-//    try {
-//        context = AnnotationConfigApplicationContext(ApplicationConfiguration::class.java)
-//        val application = context.getBean(MyApplication::class.java)
-//        application.performDbTasks()
-//    } catch (e: Exception) {
-//        e.printStackTrace()
-//    } finally {
-//        context?.close()
-//    }
 }
