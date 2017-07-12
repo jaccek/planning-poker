@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.*
 import planningpoker.action.spring.JoinRoomSpringAction
 import planningpoker.action.spring.ShowLobbySpringAction
 import planningpoker.model.form.JoinRoomForm
+import planningpoker.model.hibernate.Member
 import planningpoker.model.hibernate.Room
+import planningpoker.service.MemberService
 import planningpoker.service.RoomService
 import javax.validation.Valid
 
@@ -17,6 +19,9 @@ class LobbyWebController {
 
     @Autowired
     private lateinit var roomService: RoomService
+
+    @Autowired
+    private lateinit var memberService: MemberService
 
     @PostMapping("/joinRoom")
     fun joinRoom(
@@ -28,8 +33,17 @@ class LobbyWebController {
             return ShowLobbySpringAction().perform()
         }
 
+        // create room if not exists
         val room = Room(name = joinRoomForm.roomName!!)
         roomService.createRoomIfNotExists(room)
+
+        // get room by name (we need it because we need room id)
+        val roomDb = roomService.findRoomByName(room.name) ?: throw NullPointerException("roomDb is null")
+        val member = Member(
+                name = joinRoomForm.username!!,
+                room = roomDb
+        )
+        val memberDb = memberService.createMember(member, roomDb)
 
         return JoinRoomSpringAction(room.name)
                 .withModel(model)

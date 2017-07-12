@@ -1,12 +1,12 @@
-package planningpoker.dao
+package planningpoker.dao.impl
 
 import org.hibernate.Session
 import org.hibernate.SessionFactory
 import org.hibernate.criterion.Restrictions
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Repository
+import planningpoker.dao.RoomDao
 import planningpoker.model.hibernate.Room
-import java.sql.Timestamp
 
 @Repository
 open class RoomDaoImpl : RoomDao {
